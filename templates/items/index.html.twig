@@ -19,13 +19,31 @@
                         -->
                     </header>
                     <!-- Preview image figure-->
-                    <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
-                    <!-- Post content-->
-                    <section class="mb-5">
-                        <p class="fs-5 mb-4">{{ item.description }}</p>
-                    </section>
+{#                    <figure class="mb-4"><img class="img-fluid" src="{{ asset('uploads/' ~ item.image) }}" width="350" height="100%" alt=""></figure>
+                    <!-- Post content-->#}
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <figure class="mb-4"><img class="img-fluid" src="{{ asset('uploads/' ~ item.image) }}" width="350" height="100%" alt=""></figure>
+                        </div>
+                        <div class="col-lg-6">
+                            <section class="mt-5">
+                                    {% apply markdown_to_html %}
+                                        {{ item.description }}
+                                    {% endapply %}
+                            </section>
+                        </div>
+                    </div>
+
                 </article>
             </div>
+
+{#            <div class="col-lg-4">
+
+                <!-- Side widget-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4">{{ item.description }}</p>
+                </section>
+            </div>#}
         </div>
     </div>
 {% endblock %}
